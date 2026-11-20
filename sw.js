@@ -1,4 +1,4 @@
-const VERSION='diako-v2';
+const VERSION='diako-v3';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(VERSION).then(c=>c.addAll(SHELL))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('diako-')&&k!==VERSION&&k!=='diako-libs').map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
